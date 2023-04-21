@@ -1,0 +1,13 @@
+CREATE TABLE clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    codigo VARCHAR(4) UNIQUE
+);
+
+ALTER TABLE clientes AUTO_INCREMENT = 1;
+
+CREATE TRIGGER trg_insert_clientes
+BEFORE INSERT ON clientes
+FOR EACH ROW
+BEGIN
+  SET NEW.codigo = CONCAT('CL', LPAD(NEW.id, 2, '0'));
+END;

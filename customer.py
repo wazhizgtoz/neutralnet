@@ -9,7 +9,7 @@ with open('customer20042023.csv', 'r') as f:
 
 # ---- connect() function ----
 db = mysql.connector.connect(
-    option_files="my.ini"
+    option_files="wsl.ini"
     )
 
 # --- Status da conexão --- 

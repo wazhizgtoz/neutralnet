@@ -12,12 +12,13 @@ SELECT a.subscriber_id,
     s.work_order_id,
     s.status_appointment,
     s.created_at,
-    c.status_eq AS "SITUACAO EQ"
+    e.description AS "SITUACAO EQ"
 FROM service_orders s
     LEFT JOIN addresses a ON a.address_id = s.address_id
     AND a.subscriber_id = s.subscriber_id
     INNER JOIN customer c ON c.address_id = s.address_id
     AND c.subscriber_id = s.subscriber_id
+    INNER JOIN contract_situation e ON e.id_situation = c.status_eq 
 WHERE s.status_appointment in('Concluido com sucesso', 'Criado')
 AND s.subscriber_id = 'EQ0000000008397';
 
