@@ -7,9 +7,9 @@ select  CONCAT('EQ00000000000', eq.customer_id) AS CHAVE
       , eq.documento as CPF
       , os.status_appointment as STATUS_AGENDAMENTO      
       , eq.produto as PRODUTO      
-      , DATE_FORMAT(eq.data_criacao, "%d/%m/%Y") as DATA_CRICAO
-      , DATE_FORMAT(os.schedule_finish, "%d/%m/%Y") as DATA_AGENDAMENTO
-      , os.work_order_id as WORK_ORDER
+      , DATE_FORMAT(eq.data_criacao,      "%d/%m/%Y") as DATA_CRICAO
+      , DATE_FORMAT(os.schedule_finish,   "%d/%m/%Y") as DATA_AGENDAMENTO
+      , os.work_order_id as git branch
       , os.type as TIPO_DE_SERVIÇO      
       , cs.description as STATUS_FIM
       
