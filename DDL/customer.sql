@@ -10,6 +10,7 @@ CREATE TABLE customer(
     address_id INT,
     data_criacao TIMESTAMP,
     status_eq CHAR(1),
+    plan_value INT,    
     FOREIGN KEY (subscriber_id) 
 		REFERENCES addresses(subscriber_id) 
 			ON DELETE CASCADE     

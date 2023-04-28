@@ -2,13 +2,13 @@ import mysql.connector
 from mysql.connector import errorcode
 import csv
 
-with open('addresses20042023.csv', 'r') as f:
+with open('addresses27042023.csv', 'r') as f:
     dados = csv.reader(f)
     lista = list(dados)
 
 # ---- connect() function ----
 db = mysql.connector.connect(
-    option_files="wsl.ini"
+    option_files="my.ini"
     )
 
 # --- Status da conexão --- 
@@ -52,6 +52,7 @@ for row in lista:
                         postcode,	
                         complements,
                         created_at))
+    
 db.commit()
 
 # --- Fechando conexão --- 
