@@ -3,6 +3,7 @@ CREATE TABLE customer(
     subscriber_id VARCHAR(15),
     nome VARCHAR(255),
     documento VARCHAR(18),
+    email VARCHAR(255),
     celular VARCHAR(15),
     telefone VARCHAR(15),
     produto VARCHAR(15),    
@@ -10,7 +11,9 @@ CREATE TABLE customer(
     address_id INT,
     data_criacao TIMESTAMP,
     status_eq CHAR(1),
-    plan_value INT,    
+    plan_value INT,
+    usuario_criacao VARCHAR(150),
+    parceiro VARCHAR(150),
     FOREIGN KEY (subscriber_id) 
 		REFERENCES addresses(subscriber_id) 
 			ON DELETE CASCADE     

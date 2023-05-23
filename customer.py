@@ -3,13 +3,13 @@ import mysql.connector
 from mysql.connector import errorcode
 import csv
 
-with open('customer27042023.csv', 'r') as f:
+with open('customer2.csv', 'r') as f:
     dados = csv.reader(f)
     lista = list(dados)
 
 # ---- connect() function ----
 db = mysql.connector.connect(
-    option_files="my.ini"
+    option_files="wsl.ini"
     )
 
 # --- Status da conexão --- 
@@ -26,26 +26,31 @@ for row in lista:
     subscriber_id = row[0]
     nome = row[1]
     documento = row[2]
-    celular = row[3]
-    telefone = row[4]
-    produto = row[5]
-    vencimento = row[6]    
-    address_id = row[7]
-    data_criacao = row[8]
+    email = row[3]
+    celular = row[4]
+    telefone = row[5]
+    produto = row[6]
+    vencimento = row[7]    
+    address_id = row[8]
+    data_criacao = row[9]
+   
+    
          
     cursor.execute(f"""INSERT INTO customer(
         subscriber_id
         ,nome
         ,documento
+        ,email
         ,celular
         ,telefone
         ,produto
         ,vencimento        
         ,address_id
-        ,data_criacao) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s);""",
+        ,data_criacao) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);""",
                    (subscriber_id
                     , nome
                     , documento
+                    , email
                     , celular
                     , telefone
                     , produto
@@ -58,5 +63,7 @@ db.commit()
 cursor.close()
 
 db.close()
+
+
 
 # [<=99999999999]000\.000\.000-00;00\.000\.000\/0000-00

@@ -2,13 +2,13 @@ import mysql.connector
 from mysql.connector import errorcode
 import csv
 
-with open('addresses27042023.csv', 'r') as f:
+with open('addresses2.csv', 'r') as f:
     dados = csv.reader(f)
     lista = list(dados)
 
 # ---- connect() function ----
 db = mysql.connector.connect(
-    option_files="my.ini"
+    option_files="wsl.ini"
     )
 
 # --- Status da conexão --- 
@@ -32,6 +32,10 @@ for row in lista:
     postcode = row[7]	
     complements	= row[8]
     created_at = row[9]
+    
+    # print(address_id)
+    
+    
     cursor.execute("""
                    INSERT INTO addresses(address_id,
                         subscriber_id,	

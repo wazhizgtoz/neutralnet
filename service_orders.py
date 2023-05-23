@@ -8,13 +8,13 @@ import mysql.connector
 from mysql.connector import errorcode
 import csv
 
-with open('service_orders_ret_27042023.csv', 'r',encoding='latin-1') as f:
+with open('service_order_Ret.csv', 'r',encoding='latin-1') as f:
     dados = csv.reader(f)
     lista = list(dados)
 
 # ---- connect() function ----
 db = mysql.connector.connect(
-    option_files="my.ini"
+    option_files="wsl.ini"
     )
 
 # --- Status da conexão --- 
