@@ -14,7 +14,6 @@ CREATE TABLE customer(
     plan_value INT,
     usuario_criacao VARCHAR(150),
     parceiro VARCHAR(150),
-    FOREIGN KEY (subscriber_id) 
-		REFERENCES addresses(subscriber_id) 
-			ON DELETE CASCADE     
+    FOREIGN KEY (subscriber_id)	REFERENCES addresses(subscriber_id) ON DELETE CASCADE,
+    FOREIGN KEY (status_eq)  REFERENCES contract_situation(id_situation)  
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
