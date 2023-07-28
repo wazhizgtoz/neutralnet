@@ -1,7 +1,14 @@
-import pandas as pd
+""" Programa que irá buscar no banco de dados todos os registros de ordem de instalação 
+    e ordens de retirada (Cancelamento de produto) solicitados pelo mesmo Cliente para 
+    endereços diferentes, que caracteriam solicitação de mudança de endereço. As solicitações
+    deve ser no mesmo periodo de data.
+
+    author: Washington do Espírito Santo
+    Version: 1.0
+"""
 import mysql.connector
 from mysql.connector import errorcode
-import csv
+
 
 # ---- connect() function ----
 db = mysql.connector.connect(
@@ -10,7 +17,8 @@ db = mysql.connector.connect(
 
 # ---- Open Cursor ---- 
 cursor = db.cursor()
- 
+
+# ---- Consulta de DB
 cursor.execute("""
                 SELECT DISTINCT 
                                 so.type
@@ -29,6 +37,7 @@ cursor.execute("""
 
 dados = cursor.fetchall()
 
+# ---- Lista vazia que irá guardar os registros encontrados
 address_change = []
 
 """ 
@@ -47,6 +56,11 @@ for i in dados:
             
 for ocorrencia in address_change:
     print(ocorrencia)
+
+
+    
+# O obejtivo aqui é salvar o resultado em um arquivo csv    
+    
 #   total_retirada = open('total_retirada.csv', 'a', newline='')
 #   
 #   gravando = csv.writer(total_retirada) 
